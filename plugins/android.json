@@ -9,7 +9,38 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "kr.co.joycorp.cordova.exitapp": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova.custom.plugins.exitapp": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-admob-free": {
+      "ADMOB_APP_ID": "ca-app-pub-7091486462236476~7593549520",
+      "PLAY_SERVICES_VERSION": "11.0.4",
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-promise-polyfill": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-admob-sdk": {
+      "PLAY_SERVICES_VERSION": "11.0.4",
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    }
+  }
 }

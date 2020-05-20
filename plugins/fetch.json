@@ -6,5 +6,79 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-console": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-console"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@2.4.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-dialogs": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-dialogs"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "kr.co.joycorp.cordova.exitapp": {
+    "source": {
+      "type": "registry",
+      "id": "kr.co.joycorp.cordova.exitapp"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@5.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova.custom.plugins.exitapp": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-exitapp"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-admob-free": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-admob-free"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ADMOB_APP_ID": "ca-app-pub-7091486462236476~7593549520"
+    }
+  },
+  "cordova-promise-polyfill": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-promise-polyfill@~0.0.2"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-admob-sdk": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-admob-sdk@~0.24.1"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }
