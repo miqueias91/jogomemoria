@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
     <link rel="stylesheet" href="css/index.css" />    
 
-    <title>Quiz da Bíblia</title>
+    <title>Jogo da Memória</title>
 </head>
 
 <body>
@@ -26,17 +26,17 @@
 <template id="tabbar.html">
     <ons-page id="tabbar-page" class="">
         <ons-toolbar id="tabbar_">
-            <div class="center"><center>Quiz da Bíblia</center></div>
+            <div class="center"><center>Jogo da Memória</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
-            <ons-tab label="Versão 1.0.4" page="home.html" active></ons-tab>
+            <ons-tab label="Versão 1.0.0" page="home.html" active></ons-tab>
         </ons-tabbar>
 
         <script>
           ons.getScriptPage().addEventListener('prechange', function(event) {
             if (event.target.matches('#appTabbar')) {
-                admob.interstitial.show();
-              event.currentTarget.querySelector('#tabbar_ .center center').innerHTML = 'Quiz da Bíblia';
+                //admob.interstitial.show();
+              event.currentTarget.querySelector('#tabbar_ .center center').innerHTML = 'Jogo da Memória';
             }
           });
         </script>
@@ -53,7 +53,7 @@
 
 <template id="home.html">
   <ons-page>
-    <ons-card onclick="fn.pushPage({'id': 'quiz.html', 'title': 'Conhecimentos Gerais Bíblicos||conhecimentosGeraisBiblicos'})">
+    <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória'})">
 
       <div class="title titulo_menu"><i class="fas fa-play"></i><br>JOGAR</div>
     </ons-card>
@@ -114,7 +114,7 @@
         
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             this.querySelector('#score_ div.center').textContent = 'Max Score';
             var arr = localStorage.getItem('lista-score');
             console.log(arr)
@@ -163,19 +163,15 @@
             <div class="left">
             </div>
             <div class="center intro" style="font-size: 25px">
-                <p>Perguntas Bíblicas | Nível Fácil</p>
-
-                <p>Quiz de perguntas bíblicas com alternativas para você testar o seu conhecimento e se dedicar ainda mais a Palavra de Deus!</p>
-
-                <p>Nesta seleção de perguntas você encontrará questões gerais sobre a Bíblia, temas do Velho e Novo Testamento.</p>
-
+                <p>O jogo da memória é um clássico jogo formado por peças que apresentam uma figura em um dos lados.</p> 
+                <p>Cada figura se repete em duas peças diferentes. Para começar o jogo, as peças são postas com as figuras voltadas para baixo, para que não possam ser vistas. O participante deve, escolher duas peças e virá-las. Caso as figuras sejam iguais, as figuras permaneceram viradas. Se forem peças diferentes, estas devem ser viradas novamente.</p>
                 <p>Bom desafio!</p>
             </div>
         </ons-list-header>
         
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             this.querySelector('#score_ div.center').textContent = 'Ajuda';
             var arr = localStorage.getItem('lista-score');
             $("#maxScore").html(maxArray(JSON.parse(arr)));
@@ -206,35 +202,47 @@
   </ons-page>
 </template>
 
-<template id="quiz.html">
+<template id="jogo.html">
   <ons-page>
         <ons-toolbar id="quiz_">
             <div class="left">
-                <ons-back-button>Quiz da Bíblia Resposta</ons-back-button>
+                <ons-back-button>Jogo da Memória Resposta</ons-back-button>
             </div>
             <div class="center" style="font-size: 20px!important"></div>
         </ons-toolbar>
      
 
         <ons-list-header style="font-size: 30px;margin-top: 10px;" id="textoquiz_">
-            <div class="center">
-                <span id="acerto"></span>
-                <span style="float: right;" id="erro"></span>
-            </div>
         </ons-list-header>
-        <br>
 
-        <ons-list id="textoquiz">
-        </ons-list>
+        <div id="textoquiz" class="center" style="margin: 0 auto;text-align: center;">
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="center" style="margin: 0 auto;text-align: center;">
+            <ons-button onClick="javascript:app.Scramble()">Novo Jogo</ons-button>
+            <ons-button onClick="javascript:app.Show()">Mostrar</ons-button>
+            <ons-button onClick="javascript:app.Help()">Ajuda</ons-button>
+        </div>
 
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
-            $('#acerto').html('Acertos: '+acertos);
-            $('#erro').html('Erros: '+erros);
-            app.buscaPergunta(dados[1], num_perg);
+            var tabuleiro = '';
+            for (n=0; n < MaxY; n++){
+                var width = "width='50px'";;
+                tabuleiro += '<ons-row>';
+                for (m=0; m < MaxX; m++){
+                    tabuleiro += "<ons-col "+width+"><img src=\"img/memo0.gif\" border=0 onMouseDown=\"javascript:app.Clicked("+m+","+n+")\"></ons-col>";
+                    width = '';
+                }
+                tabuleiro += '</ons-row>';
+            }
+            $('#textoquiz').html(tabuleiro);
+            app.Scramble();
         }
     </script>
     <style>
@@ -313,14 +321,14 @@
         admob.interstitial.prepare()
     })
 
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         fn.showDialog('modal-aguarde');
         var timeoutID = 0;
         clearTimeout(timeoutID);
         setTimeout(function () {
             timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
         }, 3000);
-    });
+    });*/
 </script>
 
 </body>

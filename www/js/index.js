@@ -1,8 +1,31 @@
-var timeout = 5000;
-var num_perg = 0;
-var acertos = 0;
-var erros = 0;
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
+var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=5, S_New=2;
+Series = new Array(4);
+
+for (l=0; l < 4; l++){
+  Series[l]=new Array(2); 
+}
+
+Symbol = new Array(MaxX);
+
+for (n=0; n < MaxX; n++){
+  Symbol[n]=new Array(MaxY); 
+} 
+
+IsSolved = new Array(MaxX);
+
+for (n=0; n < MaxX; n++){
+  IsSolved[n]=new Array(MaxY); 
+} 
+
+PicNum = new Array(30);
+
+Pic = new Array(31);
+for (l=0; l < 31; l++){
+  Pic[l] = new Image(); 
+  Pic[l].src = "img/memo"+eval(l)+".gif"; 
+} 
+
 window.fn = {};
 window.fn.toggleMenu = function () {
   document.getElementById('appSplitter').right.toggle();
@@ -61,173 +84,161 @@ var app = {
     else{}
   },
 
-  buscaPergunta: function(quiz,num_pergunta) {
-    $("#textoquiz").html('');
-    var quiz = quiz || "conhecimentosGeraisBiblicos";
-    var selector = this;
-    var texts = [];
+  SetSeriesLen: function(ll){
+    S_New=ll;
+    this.Scramble();
+  },
 
-    $.ajax({
-      type : "GET",
-      url : "js/"+quiz+".json",
-      dataType : "json",
-      success : function(data){
-        $(selector).each(function(){
-          var ref = num_pergunta;
-          var pergunta = null;
-          var respostas = null;
-          var resposta = null;
-          var total_perguntas = 0;
-          var obj = {
-            id : num_pergunta,
-            opcoes : ""
-          };
+  Clicked: function(nn, mm){
+    if (this.Pressed(nn, mm))
+      this.RefreshScreen();
+  },
 
-         for(i in data){
-            total_perguntas++
-            if(i == obj.id){
-              pergunta = data[i]['pergunta'];
-              respostas = data[i]['opcoes'];
-              resposta = data[i]['resposta'];
-            }
-          }
-
-          if (pergunta) {            
-            obj.opcoes = '<ons-list-header style="font-size: 25px;">'+(num_pergunta+1)+' - '+pergunta+'</ons-list-header>';
-            for (var i in respostas) {
-              if (respostas[i]) {
-                obj.opcoes += 
-                  '<ons-list-item tappable style="font-size: 20px;">'+
-                  '    <label class="left">'+
-                  "      <ons-radio class='quiz_' input-id='quiz"+i+"' value='"+respostas[i]+"'></ons-radio>"+
-                  '    </label>'+
-                  '    <label for="quiz'+i+'" class="center">'+respostas[i]+'</label>'+
-                  '</ons-list-item>';
-              }
-            }
-          }
-          obj.opcoes +=
-            '<ons-list-item tappable modifier="longdivider" style="display: none;">'+
-            '    <label class="left">'+
-            '      <ons-radio class="quiz_" input-id="quiz_" value=""></ons-radio>'+
-            '    </label>'+
-            '    <label for="quiz_" class="center">nenhum</label>'+
-            '</ons-list-item>';
-
-          obj.opcoes +=
-            '<section style="margin: 20px">'+
-              '  <ons-button modifier="large" style="padding: 10px;box-shadow:0 5px 0 #ccc;" class="button-margin responder">RESPONDER</ons-button>'+
-              '  <ons-row>'+
-              '      <ons-col style="margin-right: 10px;">'+
-              '          <ons-button modifier="large" style="padding: 10px;box-shadow:0 5px 0 #ccc;" class="button-margin pular">PULAR</ons-button>'+
-              '      </ons-col>'+
-              '      <ons-col>'+
-              '          <ons-button modifier="large" style="padding: 10px;box-shadow:0 5px 0 #ccc;" class="button-margin finalizar">FINALIZAR</ons-button>'+
-              '      </ons-col>'+
-              '  </ons-row>'+
-            '</section>';
-          $("#textoquiz").html(obj.opcoes);
-
-          var currentId = 'quiz_';
-          var currentValue = '';
-          const radios = document.querySelectorAll('.quiz_')
-          for (var i = 0; i < radios.length; i++) {
-            var radio = radios[i];
-            radio.addEventListener('change', function (event) {
-              if (event.target.value !== currentValue) {
-                  document.getElementById(currentId).checked = false;
-                  currentId = event.target.id;
-                  currentValue = event.target.value;
-              }
-            })
-          }
-
-          $( ".responder" ).click(function() { 
-            if (currentValue != '') {
-              if (currentValue != resposta) {
-                erros++
-                ons.notification.alert({
-                  message: 'Resposta errada!',
-                  title: 'Mensagem',
-                });
-              }
-              else{
-                acertos++
-                ons.notification.alert({
-                  message: 'Resposta certa!',
-                  title: 'Mensagem',
-                  callback: function (index) {
-                    if (0 == index) {
-                      num_perg++;
-                      if (num_perg < total_perguntas) {              
-                        app.buscaPergunta(quiz, num_perg);
-                      }
-                      else{
-                        if (acertos > 0) {
-                          lista_score.push(acertos);
-                          localStorage.setItem("lista-score", JSON.stringify(lista_score));              
-                        }
-                        ons.notification.alert({
-                          message: 'Parabêns! Você chegou ao fim do quiz.<br><br>Sua pontuação: '+acertos,
-                          title: 'Mensagem',
-                          callback: function (index) {
-                            if (0 == index) {
-                              location.href = 'index.html';
-                            }
-                            else{
-                            }
-                          }
-                        });
-                      }
-                    }
-                    else{
-                    }
-                  }
-                });
-              }
-              currentId = 'quiz_';
-              currentValue = '';
-              $('.quiz_').prop('checked', false);
-              $('#acerto').html('Acertos: '+acertos);
-              $('#erro').html('Erros: '+erros);
-            }
-            else{
-              ons.notification.alert({
-                message: 'Escolha uma opção!',
-                title: 'Mensagem',
-              });
-            }
-          });
-
-          $( ".pular" ).click(function() { 
-            currentId = 'quiz_';
-            currentValue = '';
-            num_perg++;
-            if (num_perg < total_perguntas) {              
-              app.buscaPergunta(quiz, num_perg);
-            }
-          });
-
-          $( ".finalizar" ).click(function() { 
-            if (acertos > 0) {
-              lista_score.push(acertos);
-              localStorage.setItem("lista-score", JSON.stringify(lista_score));              
-            }
-            ons.notification.alert({
-              message: 'Sua pontuação: '+acertos,
-              title: 'Mensagem',
-              callback: function (index) {
-                if (0 == index) {
-                  location.href = 'index.html';
-                }
-                else{
-                }
-              }
-            });
-          });
-        });        
+  Show: function(){
+    if (IsOver)
+      ons.notification.alert({
+        message: 'Tudo é certo.',
+        title: 'Mensagem',
+      });
+    else{ 
+      for (n=0; n < MaxX; n++){
+        for (m=0; m < MaxY; m++)
+          IsSolved[n][m]=true;
       }
-    });
+      this.RefreshScreen();
+      ons.notification.alert({
+        message: 'Mostrar não é resolver!',
+        title: 'Mensagem',
+      });
+      IsOver=true;
+    }
+  },
+  
+  Scramble: function(){ 
+    var ll;
+    var nn;
+    var mm;
+    MaxS=S_New;
+    for (l=0; l<30; l++)
+      PicNum[l]=l;
+    for (ll=0; ll<108; ll++){ 
+      n=Math.round(Math.random()*100)%30;
+      m=Math.round(Math.random()*100)%30;
+      l=PicNum[n];
+      PicNum[n]=PicNum[m];
+      PicNum[m]=l;
+    }
+    l=0;
+    for (n=0; n<MaxX; n++){ 
+      for (m=0; m<MaxY; m++){ 
+        IsSolved[n][m]=false;
+        Symbol[n][m]=l % (MaxX*MaxY/MaxS);
+        l++;
+      }
+    }
+    for (l=0; l<1080; l++){ 
+      n=Math.round(Math.random()*100)%MaxX;
+      m=Math.round(Math.random()*100)%MaxY;
+      nn=Math.round(Math.random()*100)%MaxX;
+      mm=Math.round(Math.random()*100)%MaxY;
+      ll=Symbol[n][m];
+      Symbol[n][m]=Symbol[nn][mm];
+      Symbol[nn][mm]=ll;
+    }  
+    I_S=0;
+    Moves=0;
+    IsOver=false;
+    this.RefreshScreen();  
+    Now = new Date();
+    StartTime = Now.getTime() / 1000;
+  },
+
+  Pressed: function(nn, mm){ 
+    if (IsOver)  
+      return(false);
+    if (IsSolved[nn][mm]) 
+      return(false);
+    for (l=0; l<I_S; l++){ 
+      if ((Series[l][0]==nn)&&(Series[l][1]==mm))
+        return(false);
+    }
+    l=Symbol[nn][mm];
+    if (I_S==0){ 
+      Series[0][0]=nn;
+      Series[0][1]=mm;
+      I_S=1;
+    }
+    else{ 
+      if (Symbol[Series[0][0]][Series[0][1]]!=l){ 
+        Series[0][0]=nn;
+        Series[0][1]=mm;
+        I_S=1;
+      }
+      else{ 
+        Series[I_S][0]=nn;
+        Series[I_S][1]=mm;
+        I_S++;
+      }
+    }
+    if (I_S==MaxS){ 
+      for (l=0; l<I_S; l++)
+        IsSolved[Series[l][0]][Series[l][1]]=true;
+      I_S=0;
+      IsOver=true;
+      for (n=0; n<MaxX; n++){ 
+        for (m=0; m<MaxY; m++){ 
+          if (! IsSolved[n][m])
+            IsOver=false;
+        }
+      }
+    }
+    Moves++;
+    return(true);
+  },
+
+  RefreshScreen: function(){ 
+    var ll;
+    for (m=0; m < MaxY; m++){ 
+      for (n=0; n < MaxX; n++) { 
+        if (IsSolved[n][m])
+          l=PicNum[Symbol[n][m]]+1;
+        else 
+          l=0;
+        for (ll=0; ll<I_S; ll++){ 
+          if ((Series[ll][0]==n)&&(Series[ll][1]==m)){ 
+            l=PicNum[Symbol[n][m]]+1;
+          }
+        }
+        window.document.images[MaxX*m+n].src = Pic[l].src;
+      }     
+    }
+    if (IsOver) 
+    { Now = new Date();
+      EndTime = Now.getTime() / 1000;
+      ll=Math.floor(EndTime - StartTime);
+      if (window.opener){ 
+        if (window.opener.SetHighscores)
+          window.opener.SetHighscores("Memória",S_New+" pics",ll,-1);
+      }
+      ons.notification.alert({
+        message: "Valeu, você resolveu este jogo com "+Moves+" lances em "+ll+" segundos!",
+        title: 'Mensagem',
+      });
+    }
+  },
+
+  Help: function(){ 
+    ons.notification.alert({
+        message: "O Jogo da Memória é um jogo bem conhecido. Há diversos quadrados com"+
+        "\nimagens que todos são cobertas no começo. Há sempre"+
+        "\nalguns quadrados com a mesma imagem. Quando você estala"+
+        "\nsobre os quadrados com as mesmas imagens, um depois que o"+
+        "\noutro, então as imagens permanecerão descobertas, se não"+
+        "\nsomente a última imagem selecionada permanece descoberta."+
+        "\nO jogo é resolvido quando todas as imagens são visíveis."+
+        "\nBoa sorte!",
+        title: 'Mensagem',
+      });
   }
 };
 
