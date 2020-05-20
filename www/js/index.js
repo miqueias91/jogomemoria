@@ -241,5 +241,4 @@ var app = {
       });
   }
 };
-
 app.initialize();
