@@ -48,13 +48,14 @@
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
 
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-console" spec="^1.1.0" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.4.3" />
-    <plugin name="cordova-plugin-dialogs" spec="^2.0.2" />
-    <plugin name="kr.co.joycorp.cordova.exitapp" spec="^1.0.2" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
-    <plugin name="cordova.custom.plugins.exitapp" spec="~1.0.0" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <plugin name="cordova-plugin-console" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <plugin name="kr.co.joycorp.cordova.exitapp" spec="~1.0.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.2" />
+    <plugin name="cordova-plugin-exitapp" spec="~1.0.0" />
     <plugin name="cordova-plugin-admob-free" spec="^0.27.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-7091486462236476~7593549520" />
     </plugin>
