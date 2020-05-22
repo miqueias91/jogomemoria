@@ -115,8 +115,8 @@ var app = {
   },
   
   Scramble: function(){
-    fn.showDialog('modal-aguarde');
     admob.interstitial.show();
+    fn.showDialog('modal-aguarde');
     var ll;
     var nn;
     var mm;
