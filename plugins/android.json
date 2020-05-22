@@ -32,6 +32,9 @@
       "ADMOB_APP_ID": "ca-app-pub-7091486462236476~7593549520",
       "PLAY_SERVICES_VERSION": "11.0.4",
       "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-insomnia": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
     }
   },
   "dependent_plugins": {

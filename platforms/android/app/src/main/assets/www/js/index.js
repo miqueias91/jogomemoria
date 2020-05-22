@@ -114,7 +114,9 @@ var app = {
     }
   },
   
-  Scramble: function(){ 
+  Scramble: function(){
+    admob.interstitial.show();
+    fn.showDialog('modal-aguarde');
     var ll;
     var nn;
     var mm;
@@ -148,6 +150,7 @@ var app = {
     I_S=0;
     Moves=0;
     IsOver=false;
+    fn.hideDialog('modal-aguarde');
     this.RefreshScreen();  
     Now = new Date();
     StartTime = Now.getTime() / 1000;

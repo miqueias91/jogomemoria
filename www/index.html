@@ -225,6 +225,7 @@
     }
 
     document.addEventListener('deviceready', function () {
+        window.plugins.insomnia.keepAwake();
         admob.banner.config({ 
             id: admobid.banner, 
             isTesting: false, 

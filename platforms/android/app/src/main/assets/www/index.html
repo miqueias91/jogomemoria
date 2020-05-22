@@ -170,7 +170,7 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            // admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
@@ -225,6 +225,7 @@
     }
 
     document.addEventListener('deviceready', function () {
+        window.plugins.insomnia.keepAwake();
         admob.banner.config({ 
             id: admobid.banner, 
             isTesting: false, 

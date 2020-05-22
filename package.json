@@ -19,6 +19,7 @@
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-exitapp": "^1.0.0",
+    "cordova-plugin-insomnia": "^4.3.0",
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-promise-polyfill": "0.0.2",
@@ -38,7 +39,8 @@
       "cordova.custom.plugins.exitapp": {},
       "cordova-plugin-admob-free": {
         "ADMOB_APP_ID": "ca-app-pub-7091486462236476~7593549520"
-      }
+      },
+      "cordova-plugin-insomnia": {}
     },
     "platforms": [
       "android"
