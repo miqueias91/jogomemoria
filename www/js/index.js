@@ -115,6 +115,7 @@ var app = {
   },
   
   Scramble: function(){ 
+    admob.interstitial.show();
     var ll;
     var nn;
     var mm;
