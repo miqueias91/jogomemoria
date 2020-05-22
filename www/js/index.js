@@ -150,10 +150,10 @@ var app = {
     I_S=0;
     Moves=0;
     IsOver=false;
+    fn.hideDialog('modal-aguarde');
     this.RefreshScreen();  
     Now = new Date();
     StartTime = Now.getTime() / 1000;
-    // fn.hideDialog('modal-aguarde');
   },
 
   Pressed: function(nn, mm){ 
