@@ -26,8 +26,7 @@
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
               "count": 1
             }
-          ],
-          "/manifest": []
+          ]
         }
       },
       "res/xml/config.xml": {
