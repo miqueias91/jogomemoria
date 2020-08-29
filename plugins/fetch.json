@@ -90,13 +90,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "onesignal-cordova-plugin": {
-    "source": {
-      "type": "registry",
-      "id": "onesignal-cordova-plugin@^2.4.2"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }

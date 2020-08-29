@@ -34,9 +34,6 @@
     },
     "kr.co.joycorp.cordova.exitapp": {
       "PACKAGE_NAME": "com.phonegap.jumpblock"
-    },
-    "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "com.phonegap.jumpblock"
     }
   },
   "dependent_plugins": {
