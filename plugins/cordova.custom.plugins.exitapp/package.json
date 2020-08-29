@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-exitapp",
+  "_from": "cordova-plugin-exitapp@^1.0.0",
   "_id": "cordova-plugin-exitapp@1.0.0",
   "_inBundle": false,
   "_integrity": "sha1-ISUpFOxZ+QROM9Ek011iBLhXs0k=",
   "_location": "/cordova-plugin-exitapp",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-exitapp",
+    "raw": "cordova-plugin-exitapp@^1.0.0",
     "name": "cordova-plugin-exitapp",
     "escapedName": "cordova-plugin-exitapp",
-    "rawSpec": "",
+    "rawSpec": "^1.0.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.0.0"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-exitapp/-/cordova-plugin-exitapp-1.0.0.tgz",
   "_shasum": "21252914ec59f9044e33d124d35d6204b857b349",
-  "_spec": "cordova-plugin-exitapp",
+  "_spec": "cordova-plugin-exitapp@^1.0.0",
   "_where": "/var/www/jogomemoria",
   "author": {
     "name": "Rakesh Walisheter"

@@ -1,15 +1,15 @@
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=5, S_New=2;
-Series = new Array(4);
+series = new Array(4);
 
 for (l=0; l < 4; l++){
-  Series[l]=new Array(2); 
+  series[l]=new Array(2); 
 }
 
-Symbol = new Array(MaxX);
+simbolos = new Array(MaxX);
 
 for (n=0; n < MaxX; n++){
-  Symbol[n]=new Array(MaxY); 
+  simbolos[n]=new Array(MaxY); 
 } 
 
 IsSolved = new Array(MaxX);
@@ -134,7 +134,7 @@ var app = {
     for (n=0; n<MaxX; n++){ 
       for (m=0; m<MaxY; m++){ 
         IsSolved[n][m]=false;
-        Symbol[n][m]=l % (MaxX*MaxY/MaxS);
+        simbolos[n][m]=l % (MaxX*MaxY/MaxS);
         l++;
       }
     }
@@ -143,9 +143,9 @@ var app = {
       m=Math.round(Math.random()*100)%MaxY;
       nn=Math.round(Math.random()*100)%MaxX;
       mm=Math.round(Math.random()*100)%MaxY;
-      ll=Symbol[n][m];
-      Symbol[n][m]=Symbol[nn][mm];
-      Symbol[nn][mm]=ll;
+      ll=simbolos[n][m];
+      simbolos[n][m]=simbolos[nn][mm];
+      simbolos[nn][mm]=ll;
     }  
     I_S=0;
     Moves=0;
@@ -162,30 +162,30 @@ var app = {
     if (IsSolved[nn][mm]) 
       return(false);
     for (l=0; l<I_S; l++){ 
-      if ((Series[l][0]==nn)&&(Series[l][1]==mm))
+      if ((series[l][0]==nn)&&(series[l][1]==mm))
         return(false);
     }
-    l=Symbol[nn][mm];
+    l=simbolos[nn][mm];
     if (I_S==0){ 
-      Series[0][0]=nn;
-      Series[0][1]=mm;
+      series[0][0]=nn;
+      series[0][1]=mm;
       I_S=1;
     }
     else{ 
-      if (Symbol[Series[0][0]][Series[0][1]]!=l){ 
-        Series[0][0]=nn;
-        Series[0][1]=mm;
+      if (simbolos[series[0][0]][series[0][1]]!=l){ 
+        series[0][0]=nn;
+        series[0][1]=mm;
         I_S=1;
       }
       else{ 
-        Series[I_S][0]=nn;
-        Series[I_S][1]=mm;
+        series[I_S][0]=nn;
+        series[I_S][1]=mm;
         I_S++;
       }
     }
     if (I_S==MaxS){ 
       for (l=0; l<I_S; l++)
-        IsSolved[Series[l][0]][Series[l][1]]=true;
+        IsSolved[series[l][0]][series[l][1]]=true;
       I_S=0;
       IsOver=true;
       for (n=0; n<MaxX; n++){ 
@@ -204,12 +204,12 @@ var app = {
     for (m=0; m < MaxY; m++){ 
       for (n=0; n < MaxX; n++) { 
         if (IsSolved[n][m])
-          l=PicNum[Symbol[n][m]]+1;
+          l=PicNum[simbolos[n][m]]+1;
         else 
           l=0;
         for (ll=0; ll<I_S; ll++){ 
-          if ((Series[ll][0]==n)&&(Series[ll][1]==m)){ 
-            l=PicNum[Symbol[n][m]]+1;
+          if ((series[ll][0]==n)&&(series[ll][1]==m)){ 
+            l=PicNum[simbolos[n][m]]+1;
           }
         }
         window.document.images[MaxX*m+n].src = Pic[l].src;
@@ -242,6 +242,59 @@ var app = {
         "\nBoa sorte!",
         title: 'Mensagem',
       });
+  },
+
+  dateTime: function() {
+    let now = new Date;
+    let ano = now.getFullYear();
+    let mes = now.getMonth() + 1;
+    let dia = now.getDate();
+
+    let hora = now.getHours();
+    let min = now.getMinutes();
+    let seg = now.getSeconds();
+
+    if (parseInt(mes) < 10) {
+      mes = '0'+mes;
+    }
+    if (parseInt(dia) < 10) {
+      dia = '0'+dia;
+    }
+    if (parseInt(hora) < 10) {
+      hora = '0'+hora;
+    }
+    if (parseInt(min) < 10) {
+      min = '0'+min;
+    }
+    if (parseInt(seg) < 10) {
+      seg = '0'+seg;
+    }
+    return ano+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg;
+  },
+
+  getIds: function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        window.localStorage.setItem('userId',uid);
+        $("#OneSignalUserId").val(uid);
+        app.cadastraUser(uid);
+      }
+    });   
+  },
+
+  cadastraUser: function(uid) {
+    console.log(uid)
+    firebase.database().ref('jogo-da-memoria-f0081-users').child(uid).set({
+      userId: uid,
+      datacadastro: this.dateTime()
+    });
   }
 };
+
 app.initialize();
+
+if (!window.localStorage.getItem('userId')) {
+  app.getIds();
+}

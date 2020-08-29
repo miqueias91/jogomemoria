@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "456400711581",
+    "firebase_url": "https://jogo-da-memoria-f0081.firebaseio.com",
+    "project_id": "jogo-da-memoria-f0081",
+    "storage_bucket": "jogo-da-memoria-f0081.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456400711581:android:a785f0729db83ca2e1c974",
+        "android_client_info": {
+          "package_name": "com.phonegap.jumpblock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456400711581-irbaa6q6d85c81jl0jelnd5gsk3gdfjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoT6Jt2ISoAtTfv-AuQmHXHqbnlqNte3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456400711581-irbaa6q6d85c81jl0jelnd5gsk3gdfjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
