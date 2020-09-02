@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-admob-sdk": "^0.24.1",
-    "cordova-android": "^7.0.0",
+    "cordova-android": "^8.1.0",
     "cordova-plugin-admob-free": "^0.27.0",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-dialogs": "^2.0.2",

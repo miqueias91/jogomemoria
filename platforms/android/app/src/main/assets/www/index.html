@@ -26,13 +26,12 @@
             <div class="center"><center>Jogo da Memória</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
-            <ons-tab label="Versão 1.0.3" page="home.html" active></ons-tab>
+            <ons-tab label="Versão 1.0.4" page="home.html" active></ons-tab>
         </ons-tabbar>
 
         <script>
           ons.getScriptPage().addEventListener('prechange', function(event) {
             if (event.target.matches('#appTabbar')) {
-                admob.interstitial.show();
               event.currentTarget.querySelector('#tabbar_ .center center').innerHTML = 'Jogo da Memória';
             }
           });
@@ -50,7 +49,7 @@
 
 <template id="home.html">
   <ons-page>
-    <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória'})">
+    <ons-card onclick="fn.pushPage({'id': 'opcaojogo.html', 'title': 'Jogo da Memória'})">
 
       <div class="title titulo_menu"><i class="fas fa-play"></i><br>JOGAR</div>
     </ons-card>
@@ -141,6 +140,59 @@
   </ons-page>
 </template>
 
+<template id="opcaojogo.html">
+  <ons-page>
+    <ons-toolbar id="opcaojogo">
+        <div class="left">
+            <ons-back-button>Jogo da Memória</ons-back-button>
+        </div>
+        <div class="center" style="font-size: 20px!important"></div>
+    </ons-toolbar>
+    <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 2X2||2'})">
+      <div class="title titulo_menu"><br>2X2</div>
+    </ons-card>
+
+    <ons-row>
+        <ons-col>
+            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 4X4||4'})">
+                <div class="title titulo_menu"><br>4X4</div>
+            </ons-card>
+        </ons-col>
+ 
+         <ons-col>
+            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 6X6||4'})">
+                <div class="title titulo_menu"><br>6X6</div>
+            </ons-card>
+        </ons-col>
+    </ons-row>
+    <script>
+        ons.getScriptPage().onInit = function () {
+            admob.interstitial.show();
+            this.querySelector('#opcaojogo div.center').textContent = 'Jogo da Memória';
+        }
+    </script>
+
+    <style>
+      .intro {
+        text-align: center;
+        padding: 0 20px;
+        margin-top: 40px;
+      }
+
+      ons-card {
+        cursor: pointer;
+        color: #704031;
+      }
+
+      .card__title,
+      .card--material__title {
+        font-size: 20px;
+      }
+    </style>
+  </ons-page>
+</template>
+
+
 <template id="jogo.html">
   <ons-page>
         <input type="hidden" id="OneSignalUserId" value="">
@@ -152,12 +204,9 @@
             <div class="center" style="font-size: 20px!important"></div>
         </ons-toolbar>
      
+        <ons-list-header style="font-size: 30px;margin-top: 10px;" id="textoquiz_"></ons-list-header>
 
-        <ons-list-header style="font-size: 30px;margin-top: 10px;" id="textoquiz_">
-        </ons-list-header>
-
-        <div id="textoquiz" class="center" style="margin: 0 auto;text-align: center;">
-        </div>
+        <div id="textoquiz" class="center" style="margin: 0 auto;text-align: center;"></div>
         <br>
         <br>
         <br>
@@ -169,19 +218,24 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
+            admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
+            var width = "width='50px'";
+            var style = "border: 1px solid #4bb7c3;border-radius: 10px;"
+            MaxY= dados[1];
+            MaxX= dados[1];
+            console.log(MaxY)
+            console.log(MaxX)
             for (n=0; n < MaxY; n++){
-                var width = "width='50px'";;
                 tabuleiro += '<ons-row>';
                 for (m=0; m < MaxX; m++){
-                    tabuleiro += "<ons-col "+width+"><img src=\"img/memo0.gif\" border=0 onMouseDown=\"javascript:app.Clicked("+m+","+n+")\"></ons-col>";
-                    width = '';
+                    tabuleiro += "<ons-col><img "+width+" style='"+style+"' src=\"img/memo0.gif\" border=0 onMouseDown=\"javascript:app.Clicked("+m+","+n+")\"></ons-col>";
                 }
                 tabuleiro += '</ons-row>';
             }
+            width = '';
             $('#textoquiz').html(tabuleiro);
             app.Scramble();
         }

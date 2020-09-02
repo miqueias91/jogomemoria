@@ -1,5 +1,5 @@
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
-var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=5, S_New=2;
+var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=4, MaxY=4, S_New=2;
 series = new Array(4);
 
 for (l=0; l < 4; l++){
