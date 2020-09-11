@@ -22,7 +22,7 @@ div, ons-list-header, label {
     font-family:'BurbankBigCondensed-Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif!important;
 }
 .toolbar--material {
-    background-color: #4bb7c3!important;
+    background-color: #704031!important;
 }
 .toolbar--material__center {
     font-family:'BurbankBigCondensed-Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif!important;
@@ -33,22 +33,22 @@ div, ons-list-header, label {
     fill: #F5F5F5!important;
 }
 .button--material {
-    background-color: #4bb7c3!important;
+    background-color: #704031!important;
     color: #F5F5F5!important;
 }
 ons-fab.fab--material{
-    background-color: #4bb7c3!important;
+    background-color: #704031!important;
     color: #F5F5F5!important;
     opacity: 0.6!important;
 }
 .tabbar--material__border {
-    background-color: #4bb7c3!important;
+    background-color: #704031!important;
 }
 .alert-dialog-button--material {
-    color: #4bb7c3!important;
+    color: #704031!important;
 }
 .alert-dialog-title--material {
-    color: #4bb7c3!important;
+    color: #704031!important;
 }
 .modal__content {
     font-size: 30px!important;
@@ -66,7 +66,7 @@ ons-fab.fab--material{
 }
 
 .card--material {
-    background-color: #4bb7c3;
+    background-color: #704031;
     border-radius: 20px;
     box-shadow:0 5px 0 #ccc;
 }
