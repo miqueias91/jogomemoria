@@ -12,6 +12,7 @@
     <title>Jogo da Memória</title>
 </head>
 <body>
+
 <ons-navigator id="appNavigator" swipeable swipe-target-width="80px">
     <ons-page>
         <ons-splitter id="appSplitter">
@@ -26,7 +27,7 @@
             <div class="center"><center>Jogo da Memória</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
-            <ons-tab label="Versão 1.0.4" page="home.html" active></ons-tab>
+            <ons-tab label="Versão 1.0.5" page="home.html" active></ons-tab>
         </ons-tabbar>
 
         <script>
@@ -49,16 +50,13 @@
 
 <template id="home.html">
   <ons-page>
-    <ons-card onclick="fn.pushPage({'id': 'opcaojogo.html', 'title': 'Jogo da Memória'})">
-
+    <ons-card style="margin-top: 90px!important;" onclick="fn.pushPage({'id': 'opcaojogo.html', 'title': 'Jogo da Memória'})">
       <div class="title titulo_menu"><i class="fas fa-play"></i><br>JOGAR</div>
     </ons-card>
-
-
     <ons-row>
         <ons-col>
-            <ons-card onclick="fn.loadLink('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=332375636-d8a2e7ce-a38d-4b8c-b080-5b277b3df2a5')">
-              <div class="title titulo_menu"><i class="fas fa-hand-holding-usd"></i><br>DOE</div>
+            <ons-card onclick="fn.loadLink('https://www.instagram.com/innovatesoft/')">
+              <div class="title titulo_menu"><i class="fab fa-instagram"></i><br>INSTAGRAM</div>
             </ons-card>
         </ons-col>
  
@@ -112,7 +110,7 @@
         
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             this.querySelector('#ajuda_ div.center').textContent = 'Ajuda';
         }
     </script>
@@ -144,15 +142,12 @@
   <ons-page>
     <ons-toolbar id="opcaojogo">
         <div class="left">
-            <ons-back-button>Jogo da Memória</ons-back-button>
+            <ons-back-button>Tamanho do Jogo</ons-back-button>
         </div>
         <div class="center" style="font-size: 20px!important"></div>
     </ons-toolbar>
-    <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 2X2||2'})">
-      <div class="title titulo_menu"><br>2X2</div>
-    </ons-card>
 
-    <ons-row>
+    <ons-row  style="margin-top: 90px!important;">
         <ons-col>
             <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 4X4||4'})">
                 <div class="title titulo_menu"><br>4X4</div>
@@ -160,15 +155,21 @@
         </ons-col>
  
          <ons-col>
-            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 6X6||4'})">
-                <div class="title titulo_menu"><br>6X6</div>
+            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 2X2||2'})">
+              <div class="title titulo_menu"><br>2X2</div>
             </ons-card>
         </ons-col>
     </ons-row>
+
+    <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 6X6||6'})">
+        <div class="title titulo_menu"><br>6X6</div>
+    </ons-card>
+
+
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
-            this.querySelector('#opcaojogo div.center').textContent = 'Jogo da Memória';
+            //admob.interstitial.show();
+            this.querySelector('#opcaojogo div.center').textContent = 'Tamanho do Jogo';
         }
     </script>
 
@@ -192,7 +193,6 @@
   </ons-page>
 </template>
 
-
 <template id="jogo.html">
   <ons-page>
         <input type="hidden" id="OneSignalUserId" value="">
@@ -204,9 +204,7 @@
             <div class="center" style="font-size: 20px!important"></div>
         </ons-toolbar>
      
-        <ons-list-header style="font-size: 30px;margin-top: 10px;" id="textoquiz_"></ons-list-header>
-
-        <div id="textoquiz" class="center" style="margin: 0 auto;text-align: center;"></div>
+        <div id="textoquiz" class="center" style="margin: 0 auto;text-align: center;margin-top: 90px;"></div>
         <br>
         <br>
         <br>
@@ -218,18 +216,18 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
-            var width = "width='50px'";
-            var style = "border: 1px solid #4bb7c3;border-radius: 10px;"
+            var width = "width='100%'";
+            var style = "border: 1px solid #0B43D4;border-radius: 10px;"
             MaxY= dados[1];
             MaxX= dados[1];
             for (n=0; n < MaxY; n++){
                 tabuleiro += '<ons-row>';
                 for (m=0; m < MaxX; m++){
-                    tabuleiro += "<ons-col><img "+width+" style='"+style+"' src=\"img/memo0.gif\" border=0 onMouseDown=\"javascript:app.Clicked("+m+","+n+")\"></ons-col>";
+                    tabuleiro += "<ons-col style='padding: 5px;' ><img "+width+" style='"+style+"' src=\"img/memo0.jpeg\" border=0 onMouseDown=\"javascript:app.Clicked("+m+","+n+")\"></ons-col>";
                 }
                 tabuleiro += '</ons-row>';
             }

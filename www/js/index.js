@@ -1,8 +1,8 @@
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
-var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=4, MaxY=4, S_New=2;
-series = new Array(4);
+var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
+series = new Array(6);
 
-for (l=0; l < 4; l++){
+for (l=0; l < 6; l++){
   series[l]=new Array(2); 
 }
 
@@ -23,7 +23,7 @@ PicNum = new Array(30);
 Pic = new Array(31);
 for (l=0; l < 31; l++){
   Pic[l] = new Image(); 
-  Pic[l].src = "img/memo"+eval(l)+".gif"; 
+  Pic[l].src = "img/memo"+eval(l)+".jpeg"; 
 } 
 
 window.fn = {};
@@ -115,7 +115,7 @@ var app = {
   },
   
   Scramble: function(){
-    admob.interstitial.show();
+    //admob.interstitial.show();
     fn.showDialog('modal-aguarde');
     var ll;
     var nn;

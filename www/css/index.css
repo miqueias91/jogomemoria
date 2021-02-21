@@ -22,7 +22,7 @@ div, ons-list-header, label {
     font-family:'BurbankBigCondensed-Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif!important;
 }
 .toolbar--material {
-    background-color: #704031!important;
+    background-color: #002178!important;
 }
 .toolbar--material__center {
     font-family:'BurbankBigCondensed-Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif!important;
@@ -33,22 +33,22 @@ div, ons-list-header, label {
     fill: #F5F5F5!important;
 }
 .button--material {
-    background-color: #704031!important;
+    background-color: #002178!important;
     color: #F5F5F5!important;
 }
 ons-fab.fab--material{
-    background-color: #704031!important;
+    background-color: #002178!important;
     color: #F5F5F5!important;
     opacity: 0.6!important;
 }
 .tabbar--material__border {
-    background-color: #704031!important;
+    background-color: #002178!important;
 }
 .alert-dialog-button--material {
-    color: #704031!important;
+    color: #002178!important;
 }
 .alert-dialog-title--material {
-    color: #704031!important;
+    color: #002178!important;
 }
 .modal__content {
     font-size: 30px!important;
@@ -64,11 +64,14 @@ ons-fab.fab--material{
 .titulo_menu i{
     font-size: 25px;
 }
-
+.card {
+    margin: 15px;
+    padding: 6px;
+}
 .card--material {
-    background-color: #704031;
-    border-radius: 20px;
-    box-shadow:0 5px 0 #ccc;
+    background-color: #18C201;
+    border-radius: 50px;
+    box-shadow:0 5px 0 #009300;
 }
 
 .alert-dialog-content--material {
@@ -80,12 +83,10 @@ ons-fab.fab--material{
 }
 
 .page--material__background {
-    background-color: #32302c!important;
+    background-image: url('../img/fundo.jpeg')!important;
 }
 :checked + .tabbar--material__button {
-    background-color: #32302c!important;
     color: #757575!important;
 }
 .list-header--material {
-    background: #32302c!important;
 }
