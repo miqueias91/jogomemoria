@@ -22,7 +22,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-exitapp/-/cordova-plugin-exitapp-1.0.0.tgz",
   "_shasum": "21252914ec59f9044e33d124d35d6204b857b349",
   "_spec": "cordova-plugin-exitapp@^1.0.0",
-  "_where": "/var/www/jogomemoria",
+  "_where": "/var/www/app/jogomemoria",
   "author": {
     "name": "Rakesh Walisheter"
   },

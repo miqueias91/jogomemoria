@@ -44,6 +44,8 @@
       "cordova-plugin-insomnia": {},
       "cordova-plugin-exitapp": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }
