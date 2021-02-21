@@ -282,14 +282,14 @@
         window.plugins.insomnia.keepAwake();
         admob.banner.config({ 
             id: admobid.banner, 
-            isTesting: false, 
+            isTesting: true, 
             autoShow: true, 
         })
         admob.banner.prepare()
         
         admob.interstitial.config({
             id: admobid.interstitial,
-            isTesting: false,
+            isTesting: true,
             autoShow: false,
         })
         admob.interstitial.prepare()
