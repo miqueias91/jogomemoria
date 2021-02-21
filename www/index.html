@@ -110,7 +110,7 @@
         
     <script>
         ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
+            admob.interstitial.show();
             this.querySelector('#ajuda_ div.center').textContent = 'Ajuda';
         }
     </script>
@@ -167,7 +167,7 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
+            admob.interstitial.show();
             this.querySelector('#opcaojogo div.center').textContent = 'Tamanho do Jogo';
         }
     </script>
@@ -215,7 +215,7 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
+            admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
@@ -281,14 +281,14 @@
         window.plugins.insomnia.keepAwake();
         admob.banner.config({ 
             id: admobid.banner, 
-            isTesting: true, 
+            isTesting: false, 
             autoShow: true, 
         })
         admob.banner.prepare()
         
         admob.interstitial.config({
             id: admobid.interstitial,
-            isTesting: true,
+            isTesting: false,
             autoShow: false,
         })
         admob.interstitial.prepare()
