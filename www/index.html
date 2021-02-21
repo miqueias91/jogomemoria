@@ -148,15 +148,14 @@
     </ons-toolbar>
 
     <ons-row  style="margin-top: 90px!important;">
-        <ons-col>
-            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 4X4||4'})">
-                <div class="title titulo_menu"><br>4X4</div>
-            </ons-card>
-        </ons-col>
- 
          <ons-col>
             <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 2X2||2'})">
               <div class="title titulo_menu"><br>2X2</div>
+            </ons-card>
+        </ons-col>
+        <ons-col>
+            <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 4X4||4'})">
+                <div class="title titulo_menu"><br>4X4</div>
             </ons-card>
         </ons-col>
     </ons-row>
@@ -221,7 +220,7 @@
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
             var width = "width='100%'";
-            var style = "border: 1px solid #0B43D4;border-radius: 10px;"
+            var style = "border: 1px solid #002178;border-radius: 10px;"
             MaxY= dados[1];
             MaxX= dados[1];
             for (n=0; n < MaxY; n++){

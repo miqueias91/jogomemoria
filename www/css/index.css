@@ -33,8 +33,9 @@ div, ons-list-header, label {
     fill: #F5F5F5!important;
 }
 .button--material {
-    background-color: #002178!important;
-    color: #F5F5F5!important;
+    background-color: #18C201;
+    border-radius: 50px;
+    box-shadow:0 5px 0 #009300;
 }
 ons-fab.fab--material{
     background-color: #002178!important;
