@@ -1,6 +1,3 @@
-// Audio player
-var my_media = null;
-var mediaTimer = null;
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
 series = new Array(6);
@@ -74,7 +71,6 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {    
     this.receivedEvent('deviceready');  
-    this.playAudio("https://firebasestorage.googleapis.com/v0/b/jogo-da-memoria-f0081.appspot.com/o/audio%2Finicio.mp4?alt=media&token=6665c5be-1088-46c5-8fea-bae0a8b5f6b5");
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
@@ -115,7 +111,7 @@ var app = {
     }
   },
   Scramble: function(){
-    //admob.interstitial.show();
+    admob.interstitial.show();
     fn.showDialog('modal-aguarde');
     var ll;
     var nn;
@@ -266,36 +262,8 @@ var app = {
       seg = '0'+seg;
     }
     return ano+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg;
-  },
-  playAudio: function(src) {
-    alert(src);
-    if (my_media == null) {
-        // Create Media object from src
-        my_media = new Media(src, onSuccess, onError);
-    } // else play current audio
-    // Play audio
-    my_media.play();
-
-    // Update my_media position every second
-    if (mediaTimer == null) {
-        mediaTimer = setInterval(function() {
-            // get my_media position
-            my_media.getCurrentPosition(
-                // success callback
-                function(position) {
-                    if (position > -1) {
-                        setAudioPosition((position) + " sec");
-                    }
-                },
-                // error callback
-                function(e) {
-                    alert("Error getting pos=" + e);
-                    setAudioPosition("Error: " + e);
-                }
-            );
-        }, 1000);
-    }
   }
+
 
 };
 

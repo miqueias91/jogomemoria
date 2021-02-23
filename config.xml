@@ -58,5 +58,4 @@
     <plugin name="cordova-plugin-admob-free" spec="^0.27.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-7091486462236476~7593549520" />
     </plugin>
-    <engine name="android" spec="~8.1.0" />
 </widget>

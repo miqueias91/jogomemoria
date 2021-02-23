@@ -74,7 +74,6 @@ var app = {
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-    console.log('receivedEvent');
   },
   //FUNÇÃO DE BUSCA
   onSearchKeyDown: function(id) {
@@ -88,12 +87,10 @@ var app = {
     S_New=ll;
     this.Scramble();
   },
-
   Clicked: function(nn, mm){
     if (this.Pressed(nn, mm))
       this.RefreshScreen();
   },
-
   Show: function(){
     if (IsOver)
       ons.notification.alert({
@@ -113,7 +110,6 @@ var app = {
       IsOver=true;
     }
   },
-  
   Scramble: function(){
     admob.interstitial.show();
     fn.showDialog('modal-aguarde');
@@ -155,7 +151,6 @@ var app = {
     Now = new Date();
     StartTime = Now.getTime() / 1000;
   },
-
   Pressed: function(nn, mm){ 
     if (IsOver)  
       return(false);
@@ -198,7 +193,6 @@ var app = {
     Moves++;
     return(true);
   },
-
   RefreshScreen: function(){ 
     var ll;
     for (m=0; m < MaxY; m++){ 
@@ -229,7 +223,6 @@ var app = {
       });
     }
   },
-
   Help: function(){ 
     ons.notification.alert({
         message: "O Jogo da Memória é um jogo bem conhecido. Há diversos quadrados com"+
@@ -243,7 +236,6 @@ var app = {
         title: 'Mensagem',
       });
   },
-
   dateTime: function() {
     let now = new Date;
     let ano = now.getFullYear();
@@ -270,31 +262,9 @@ var app = {
       seg = '0'+seg;
     }
     return ano+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg;
-  },
-
-  getIds: function() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        window.localStorage.setItem('userId',uid);
-        $("#OneSignalUserId").val(uid);
-        app.cadastraUser(uid);
-      }
-    });   
-  },
-
-  cadastraUser: function(uid) {
-    console.log(uid)
-    firebase.database().ref('jogo-da-memoria-f0081-users').child(uid).set({
-      userId: uid,
-      datacadastro: this.dateTime()
-    });
   }
+
+
 };
 
 app.initialize();
-
-if (!window.localStorage.getItem('userId')) {
-  app.getIds();
-}
