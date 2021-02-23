@@ -74,10 +74,10 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {    
     this.receivedEvent('deviceready');  
+    this.playAudio("https://firebasestorage.googleapis.com/v0/b/jogo-da-memoria-f0081.appspot.com/o/audio%2Finicio.mp4?alt=media&token=6665c5be-1088-46c5-8fea-bae0a8b5f6b5");
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-    this.playAudio(window.localStorage.getItem('audio'));
   },
   //FUNÇÃO DE BUSCA
   onSearchKeyDown: function(id) {
@@ -288,7 +288,7 @@ var app = {
                 },
                 // error callback
                 function(e) {
-                    console.log("Error getting pos=" + e);
+                    alert("Error getting pos=" + e);
                     setAudioPosition("Error: " + e);
                 }
             );
