@@ -1,3 +1,6 @@
+// Audio player
+var my_media = null;
+var mediaTimer = null;
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
 series = new Array(6);
@@ -74,7 +77,7 @@ var app = {
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-    console.log('receivedEvent');
+    this.playAudio("audio/inicio.mp3");
   },
   //FUNÇÃO DE BUSCA
   onSearchKeyDown: function(id) {
@@ -115,7 +118,7 @@ var app = {
   },
   
   Scramble: function(){
-    admob.interstitial.show();
+    //admob.interstitial.show();
     fn.showDialog('modal-aguarde');
     var ll;
     var nn;
@@ -283,7 +286,34 @@ var app = {
       }
     });   
   },
+  playAudio: function(src) {
+    if (my_media == null) {
+        // Create Media object from src
+        my_media = new Media(src, onSuccess, onError);
+    } // else play current audio
+    // Play audio
+    my_media.play();
 
+    // Update my_media position every second
+    if (mediaTimer == null) {
+        mediaTimer = setInterval(function() {
+            // get my_media position
+            my_media.getCurrentPosition(
+                // success callback
+                function(position) {
+                    if (position > -1) {
+                        setAudioPosition((position) + " sec");
+                    }
+                },
+                // error callback
+                function(e) {
+                    console.log("Error getting pos=" + e);
+                    setAudioPosition("Error: " + e);
+                }
+            );
+        }, 1000);
+    }
+  },
   cadastraUser: function(uid) {
     console.log(uid)
     firebase.database().ref('jogo-da-memoria-f0081-users').child(uid).set({

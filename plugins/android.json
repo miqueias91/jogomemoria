@@ -34,6 +34,9 @@
     },
     "kr.co.joycorp.cordova.exitapp": {
       "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
     }
   },
   "dependent_plugins": {
@@ -42,6 +45,9 @@
       "PACKAGE_NAME": "com.phonegap.jumpblock"
     },
     "cordova-promise-polyfill": {
+      "PACKAGE_NAME": "com.phonegap.jumpblock"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.phonegap.jumpblock"
     }
   }

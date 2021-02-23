@@ -27,7 +27,7 @@
             <div class="center"><center>Jogo da Memória</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
-            <ons-tab label="Versão 1.0.5" page="home.html" active></ons-tab>
+            <ons-tab label="Versão 1.0.6" page="home.html" active></ons-tab>
         </ons-tabbar>
 
         <script>
@@ -51,23 +51,23 @@
 <template id="home.html">
   <ons-page>
     <ons-card style="margin-top: 90px!important;" onclick="fn.pushPage({'id': 'opcaojogo.html', 'title': 'Jogo da Memória'})">
-      <div class="title titulo_menu"><i class="fas fa-play"></i><br>JOGAR</div>
+      <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fas fa-play"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">JOGAR</span></div>
     </ons-card>
     <ons-row>
         <ons-col>
             <ons-card onclick="fn.loadLink('https://www.instagram.com/innovatesoft/')">
-              <div class="title titulo_menu"><i class="fab fa-instagram"></i><br>INSTAGRAM</div>
+              <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fab fa-instagram"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">INSTAGRAM</span></div>
             </ons-card>
         </ons-col>
  
         <ons-col>
             <ons-card onclick="fn.loadLink('https://play.google.com/store/apps/collection/cluster?clp=igNKChkKEzU4MzY0OTEwMzM3MTQyMDQzODIQCBgDEisKJWNvbS5waG9uZWdhcC5naXJpYXNlc3RhZG9zYnJhc2lsZWlyb3MQARgDGAE%3D:S:ANO1ljIUr74&gsr=Ck2KA0oKGQoTNTgzNjQ5MTAzMzcxNDIwNDM4MhAIGAMSKwolY29tLnBob25lZ2FwLmdpcmlhc2VzdGFkb3NicmFzaWxlaXJvcxABGAMYAQ%3D%3D:S:ANO1ljJSHsA')">
-              <div class="title titulo_menu"><i class="fab fa-google-play"></i><br>APP'S</div>
+              <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fab fa-google-play"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">APP'S</span></div>
             </ons-card>
         </ons-col>
     </ons-row>
     <ons-card onclick="fn.pushPage({'id': 'help.html', 'title': 'Ajuda'})">
-      <div class="title titulo_menu"><i class="fas fa-question-circle"></i><br>AJUDA</div>
+      <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fas fa-question-circle"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">AJUDA</span></div>
     </ons-card>
 
     <style>
@@ -110,7 +110,7 @@
         
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             this.querySelector('#ajuda_ div.center').textContent = 'Ajuda';
         }
     </script>
@@ -142,7 +142,7 @@
   <ons-page>
     <ons-toolbar id="opcaojogo">
         <div class="left">
-            <ons-back-button>Tamanho do Jogo</ons-back-button>
+            <ons-back-button>Nível do jogo</ons-back-button>
         </div>
         <div class="center" style="font-size: 20px!important"></div>
     </ons-toolbar>
@@ -150,25 +150,25 @@
     <ons-row  style="margin-top: 90px!important;">
          <ons-col>
             <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 2X2||2'})">
-              <div class="title titulo_menu"><br>2X2</div>
+              <div class="title titulo_menu"><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">FÁCIL</span></div>
             </ons-card>
         </ons-col>
         <ons-col>
             <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 4X4||4'})">
-                <div class="title titulo_menu"><br>4X4</div>
+                <div class="title titulo_menu"><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">MÉDIO</span></div>
             </ons-card>
         </ons-col>
     </ons-row>
 
     <ons-card onclick="fn.pushPage({'id': 'jogo.html', 'title': 'Jogo da Memória 6X6||6'})">
-        <div class="title titulo_menu"><br>6X6</div>
+        <div class="title titulo_menu"><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">DIFÍCIL</span></div>
     </ons-card>
 
 
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
-            this.querySelector('#opcaojogo div.center').textContent = 'Tamanho do Jogo';
+            //admob.interstitial.show();
+            this.querySelector('#opcaojogo div.center').textContent = 'Nível do jogo';
         }
     </script>
 
@@ -208,14 +208,14 @@
         <br>
         <br>
         <div class="center" style="margin: 0 auto;text-align: center;">
-            <ons-button onClick="javascript:app.Scramble()">Novo Jogo</ons-button>
-            <ons-button onClick="javascript:app.Show()">Mostrar</ons-button>
-            <ons-button onClick="javascript:app.Help()">Ajuda</ons-button>
+            <ons-button style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" onClick="javascript:app.Scramble()">Novo Jogo</ons-button>
+            <ons-button style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" onClick="javascript:app.Show()">Mostrar</ons-button>
+            <ons-button style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" onClick="javascript:app.Help()">Ajuda</ons-button>
         </div>
 
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';
