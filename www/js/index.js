@@ -77,7 +77,7 @@ var app = {
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-    this.playAudio("audio/inicio.mp3");
+    this.playAudio("audio/inicio.mp4");
   },
   //FUNÇÃO DE BUSCA
   onSearchKeyDown: function(id) {
