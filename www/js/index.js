@@ -268,6 +268,7 @@ var app = {
     return ano+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg;
   },
   playAudio: function(src) {
+    alert(src);
     if (my_media == null) {
         // Create Media object from src
         my_media = new Media(src, onSuccess, onError);
