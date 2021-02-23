@@ -32,7 +32,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   var storage = firebase.storage();
   var storageRef = storage.ref();
   storageRef.child('audio/inicio.mp4').getDownloadURL().then(function(audio) {
-    console.log(audio)
     window.localStorage.setItem('audio',audio);
   });
 
