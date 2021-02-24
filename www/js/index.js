@@ -1,3 +1,5 @@
+var audio = new Audio(localStorage.getItem('audio'));
+audio.play();
 
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
@@ -72,8 +74,6 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {    
     this.receivedEvent('deviceready');  
-    var audio = new Audio(localStorage.getItem('audio'));
-    audio.play();
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
