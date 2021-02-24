@@ -27,7 +27,7 @@
             <div class="center"><center>Jogo da Memória</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
-            <ons-tab label="Versão 1.0.6" page="home.html" active></ons-tab>
+            <ons-tab label="Versão 1.0.7" page="home.html" active></ons-tab>
         </ons-tabbar>
 
         <script>
@@ -71,6 +71,7 @@
     </ons-card>
    <script>
         ons.getScriptPage().onInit = function () {
+            audio.loop = true;
             audio.play();
         }
     </script>
@@ -114,7 +115,7 @@
         
     <script>
         ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             this.querySelector('#ajuda_ div.center').textContent = 'Ajuda';
         }
     </script>
@@ -146,7 +147,7 @@
   <ons-page>
     <ons-toolbar id="opcaojogo">
         <div class="left">
-            <ons-back-button>Nível do jogo</ons-back-button>
+            <ons-back-button id="botao_voltar_nivel_jogo">Nível do jogo</ons-back-button>
         </div>
         <div class="center" style="font-size: 20px!important"></div>
     </ons-toolbar>
@@ -171,8 +172,13 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
+            audio.loop = true;
             audio.play();
-            admob.interstitial.show();
+            $('#botao_voltar_nivel_jogo').click(function(){
+                audio.loop = true;
+                audio.play();
+            });
+            //admob.interstitial.show();
             this.querySelector('#opcaojogo div.center').textContent = 'Nível do jogo';
         }
     </script>
@@ -203,7 +209,7 @@
         <input type="hidden" id="OneSignalPushToken" value="">
         <ons-toolbar id="quiz_">
             <div class="left">
-                <ons-back-button>Jogo da Memória</ons-back-button>
+                <ons-back-button id="botao_voltar_jogo_da_memoria">Jogo da Memória</ons-back-button>
             </div>
             <div class="center" style="font-size: 20px!important"></div>
         </ons-toolbar>
@@ -220,8 +226,13 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
+            $('#botao_voltar_jogo_da_memoria').click(function(){
+                audio.loop = true;
+                audio.play();
+            });
+
             audio.pause();
-            admob.interstitial.show();
+            //admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
             var tabuleiro = '';

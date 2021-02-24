@@ -1,5 +1,4 @@
 var audio = new Audio(localStorage.getItem('audio'));
-audio.play();
 
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
@@ -114,7 +113,7 @@ var app = {
     }
   },
   Scramble: function(){
-    admob.interstitial.show();
+    //admob.interstitial.show();
     fn.showDialog('modal-aguarde');
     var ll;
     var nn;

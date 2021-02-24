@@ -1,7 +1,7 @@
 {
   "name": "Jogo da Memória",
   "displayName": "Jogo da Memória",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "O jogo clássico formado por peças que apresentam uma figura em um dos lados.",
   "main": "index.js",
   "scripts": {
