@@ -69,7 +69,11 @@
     <ons-card onclick="fn.pushPage({'id': 'help.html', 'title': 'Ajuda'})">
       <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fas fa-question-circle"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">AJUDA</span></div>
     </ons-card>
-
+   <script>
+        ons.getScriptPage().onInit = function () {
+            audio.play();
+        }
+    </script>
     <style>
       .intro {
         text-align: center;
@@ -167,6 +171,7 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
+            audio.play();
             admob.interstitial.show();
             this.querySelector('#opcaojogo div.center').textContent = 'Nível do jogo';
         }
