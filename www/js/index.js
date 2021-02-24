@@ -1,3 +1,6 @@
+var audio = new Audio('https://firebasestorage.googleapis.com/v0/b/jogo-da-memoria-f0081.appspot.com/o/audio%2Finicio.mp4?alt=media&token=6665c5be-1088-46c5-8fea-bae0a8b5f6b5');
+audio.play();
+
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
 series = new Array(6);
