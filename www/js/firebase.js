@@ -31,7 +31,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   var storage = firebase.storage();
   var storageRef = storage.ref();
-  storageRef.child('audio/inicio.mp4').getDownloadURL().then(function(audio) {
+  storageRef.child('audio/happy_mistake_RKVC.mp4').getDownloadURL().then(function(audio) {
     window.localStorage.setItem('audio',audio);
   });
 

@@ -215,6 +215,7 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
+            audio.pause();
             admob.interstitial.show();
             var dados = this.data.title.split('||'); 
             this.querySelector('#quiz_ div.center').textContent = dados[0];
