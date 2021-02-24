@@ -1,5 +1,6 @@
 var audio = new Audio(localStorage.getItem('audio'));
 
+window.localStorage.setItem('tocar',true);
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
 var l, n, m, I_S, IsOver, MaxS, StartTime, EndTime, MaxX=6, MaxY=6, S_New=2;
 series = new Array(6);

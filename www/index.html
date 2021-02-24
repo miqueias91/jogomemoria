@@ -69,10 +69,34 @@
     <ons-card onclick="fn.pushPage({'id': 'help.html', 'title': 'Ajuda'})">
       <div class="title titulo_menu"><i style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;" class="fas fa-question-circle"></i><br><span style="text-shadow: #000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;">AJUDA</span></div>
     </ons-card>
+    <ons-fab position="bottom right" id="botao_som_ligado">
+        <i class="fas fa-volume-up"></i>
+    </ons-fab>
+
+    <ons-fab position="bottom right" id="botao_som_desligado" style="display: none;">
+        <i class="fas fa-volume-down"></i>
+    </ons-fab>
+
    <script>
         ons.getScriptPage().onInit = function () {
-            audio.loop = true;
-            audio.play();
+            if (localStorage.getItem('tocar')) {                
+                audio.loop = true;
+                audio.play();
+            }
+
+            $('#botao_som_ligado').click(function(){
+                audio.pause();
+                $(this).css('display','none');
+                $('#botao_som_desligado').css('display','');
+                window.localStorage.setItem('tocar',false);                
+            });
+
+            $('#botao_som_desligado').click(function(){
+                audio.play();
+                $(this).css('display','none');
+                $('#botao_som_ligado').css('display','');
+                window.localStorage.setItem('tocar',true);
+            });
         }
     </script>
     <style>
@@ -172,11 +196,15 @@
 
     <script>
         ons.getScriptPage().onInit = function () {
-            audio.loop = true;
-            audio.play();
-            $('#botao_voltar_nivel_jogo').click(function(){
+            if (localStorage.getItem('tocar')) {                
                 audio.loop = true;
                 audio.play();
+            }
+            $('#botao_voltar_nivel_jogo').click(function(){
+                if (localStorage.getItem('tocar')) {                    
+                    audio.loop = true;
+                    audio.play();
+                }
             });
             //admob.interstitial.show();
             this.querySelector('#opcaojogo div.center').textContent = 'Nível do jogo';
@@ -227,8 +255,10 @@
     <script>
         ons.getScriptPage().onInit = function () {
             $('#botao_voltar_jogo_da_memoria').click(function(){
-                audio.loop = true;
-                audio.play();
+                if (localStorage.getItem('tocar')) {                    
+                    audio.loop = true;
+                    audio.play();
+                }
             });
 
             audio.pause();
