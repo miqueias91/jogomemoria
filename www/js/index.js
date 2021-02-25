@@ -1,4 +1,6 @@
-var audio = new Audio(localStorage.getItem('audio'));
+var audio_fundo = new Audio(localStorage.getItem('audio'));
+var audio_acertou = new Audio('./audio/acertou.mp3');
+var audio_errou = new Audio('./audio/errou.mp3');
 
 window.localStorage.setItem('tocar',true);
 var lista_score = JSON.parse(localStorage.getItem('lista-score') || '[]');
@@ -21,10 +23,10 @@ for (n=0; n < MaxX; n++){
   IsSolved[n]=new Array(MaxY); 
 } 
 
-PicNum = new Array(30);
+PicNum = new Array(41);
 
-Pic = new Array(31);
-for (l=0; l < 31; l++){
+Pic = new Array(42);
+for (l=0; l < 42; l++){
   Pic[l] = new Image(); 
   Pic[l].src = "img/memo"+eval(l)+".jpeg"; 
 } 
@@ -91,8 +93,14 @@ var app = {
     this.Scramble();
   },
   Clicked: function(nn, mm){
-    if (this.Pressed(nn, mm))
+    audio_acertou.pause();
+    audio_errou.pause();
+    audio_acertou.currentTime = 0;
+    audio_errou.currentTime = 0;
+
+    if (this.Pressed(nn, mm)){
       this.RefreshScreen();
+    }
   },
   Show: function(){
     if (IsOver)
@@ -120,11 +128,11 @@ var app = {
     var nn;
     var mm;
     MaxS=S_New;
-    for (l=0; l<30; l++)
+    for (l=0; l<41; l++)
       PicNum[l]=l;
-    for (ll=0; ll<108; ll++){ 
-      n=Math.round(Math.random()*100)%30;
-      m=Math.round(Math.random()*100)%30;
+    for (ll=0; ll<108; ll++){
+      n=Math.round(Math.random()*100)%41;
+      m=Math.round(Math.random()*100)%41;
       l=PicNum[n];
       PicNum[n]=PicNum[m];
       PicNum[m]=l;
@@ -155,41 +163,50 @@ var app = {
     StartTime = Now.getTime() / 1000;
   },
   Pressed: function(nn, mm){ 
-    if (IsOver)  
+    if (IsOver){
       return(false);
-    if (IsSolved[nn][mm]) 
+    }
+    if (IsSolved[nn][mm]){      
       return(false);
+    }
     for (l=0; l<I_S; l++){ 
-      if ((series[l][0]==nn)&&(series[l][1]==mm))
+      if ((series[l][0]==nn)&&(series[l][1]==mm)){        
         return(false);
+      }
     }
     l=simbolos[nn][mm];
-    if (I_S==0){ 
+    if (I_S==0){
       series[0][0]=nn;
       series[0][1]=mm;
       I_S=1;
     }
     else{ 
       if (simbolos[series[0][0]][series[0][1]]!=l){ 
+        audio_errou.play();
+        console.log('ERROU!!!')
         series[0][0]=nn;
         series[0][1]=mm;
         I_S=1;
       }
       else{ 
+        audio_acertou.play();
+        console.log('ACERTOU!!!')
         series[I_S][0]=nn;
         series[I_S][1]=mm;
         I_S++;
       }
     }
     if (I_S==MaxS){ 
-      for (l=0; l<I_S; l++)
+      for (l=0; l<I_S; l++){
         IsSolved[series[l][0]][series[l][1]]=true;
+      }
       I_S=0;
       IsOver=true;
       for (n=0; n<MaxX; n++){ 
         for (m=0; m<MaxY; m++){ 
-          if (! IsSolved[n][m])
+          if (! IsSolved[n][m]){
             IsOver=false;
+          }
         }
       }
     }
@@ -209,11 +226,12 @@ var app = {
             l=PicNum[simbolos[n][m]]+1;
           }
         }
+
         window.document.images[MaxX*m+n].src = Pic[l].src;
       }     
     }
-    if (IsOver) 
-    { Now = new Date();
+    if (IsOver){       
+      Now = new Date();
       EndTime = Now.getTime() / 1000;
       ll=Math.floor(EndTime - StartTime);
       if (window.opener){ 
